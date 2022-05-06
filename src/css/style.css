@@ -1,0 +1,191 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+  scroll-behavor: smooth;
+}
+
+/*
+/* BASE AND BASE STYLES
+*/
+
+body {
+  background: lightgreen;
+}
+
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+p,
+span {
+  min-height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.type {
+  text-transform: uppercase;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+img{
+  min-height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+label,
+input,
+button {
+  display: block;
+}
+
+header,
+.evolutions-title {
+  text-align: center;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+}
+
+form > * {
+  margin: .5rem auto;
+}
+
+.pokedex {
+  width: 100vw;
+  max-width: 75ch;
+  margin: 1rem auto;
+  background-color: lightblue;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 5px;
+}
+
+.pokedex-top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pokedex-top > div {
+  background: transparent;
+}
+
+.pokedex > div {
+  flex: 0 1 auto;
+}
+
+.pokemon-img {
+  min-height: 20vh;
+  
+}
+
+.pokemon-info {
+  padding-bottom: 10%;
+}
+
+.pokemon-info > p,
+.horizontal {
+  padding: 0 1rem;
+  border-bottom: 1px solid white;
+}
+
+.types {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.flavor-text {
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem;
+
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.evolution-tree {
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  border: none;
+}
+
+.evolution-tree li {
+  display: inline-block;
+  min-height: 20rem;
+  width: 20rem;
+}
+
+.evolution-tree li a {
+  display: inline-block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.centered {
+  display: block;
+  text-align: center;
+}
+
+#pokedex {
+  transform: transition 300ms ease-out;
+}
+
+@media (min-width: 75ch) {
+  .evolution-tree {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .pokemon-img {
+    width: 45%;
+  }
+
+  .pokemon-info {
+    width: 55%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .pokedex-top {
+    flex-direction: row;
+  }
+
+  .flavor-text {
+    padding: 1rem;
+    min-height: 4rem;
+  }
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
