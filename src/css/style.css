@@ -5,187 +5,160 @@
 /* Box Model Hack */
 *{
   box-sizing: border-box;
-  scroll-behavor: smooth;
 }
 
-/*
-/* BASE AND BASE STYLES
-*/
+:root {
+  --primary-background-color: #061f4a;
+  --primary-text-color: #fff;
+  --primary-accent-color: #e59892;
+}
 
 body {
-  background: lightgreen;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  font-family:'Courier New', Courier, monospace;
 }
 
-p,
+.hidden {
+  display: none;
+}
+
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+h1,
+h2 {
+  text-align: center;
+}
+
+input,
+button {
+  border-radius: 0;
+  border: 1px solid black;
+}
+
+button {
+  background-color: var(--primary-accent-color);
+  cursor: pointer;
+}
+
+.btn-disabled {
+  pointer-events: none;
+  background-color: transparent;
+}
+
 ul {
   margin: 0;
   padding: 0;
 }
 
-ul {
-  list-style: none;
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
-p,
-span {
-  min-height: 1.5rem;
-  line-height: 1.5rem;
+img{
+  display: block;
+  margin: 0 auto;
 }
 
-.type {
-  text-transform: uppercase;
+.form-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0;
+  width: 75vw;
+
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.form-flex > * {
+  height: 3rem;
 }
 
 /******************************************
-/* LAYOUT
+/* CAROUSEL
 /*******************************************/
 
-img{
-  min-height: 100%;
-  width: 100%;
-  display: block;
-  object-fit: contain;
-}
-
-label,
-input,
-button {
-  display: block;
-}
-
-header,
-.evolutions-title {
-  text-align: center;
-}
-
-.horizontal {
-  display: flex;
-  justify-content: space-between;
-}
-
-form > * {
-  margin: .5rem auto;
-}
-
-.pokedex {
-  width: 100vw;
-  max-width: 75ch;
-  margin: 1rem auto;
-  background-color: lightblue;
-
-  display: flex;
-  flex-direction: column;
-
-  border-radius: 5px;
-}
-
-.pokedex-top {
+.carousel__container {
+  /* background-color: red; */
   position: relative;
-  display: flex;
-  flex-direction: column;
-}
+  margin-top: 2.5vh;
 
-.pokedex-top > div {
-  background: transparent;
-}
-
-.pokedex > div {
-  flex: 0 1 auto;
-}
-
-.pokemon-img {
-  min-height: 20vh;
-  
-}
-
-.pokemon-info {
-  padding-bottom: 10%;
-}
-
-.pokemon-info > p,
-.horizontal {
-  padding: 0 1rem;
-  border-bottom: 1px solid white;
-}
-
-.types {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
+  min-height: 75vh;
 }
 
-.flavor-text {
+.carousel__buttons {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.carousel__cards {
+  /* background-color: teal; */
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.apod_card {
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 100%;
+  width: 100vw;
+}
+
+.apod-media-container {
+  position: relative;
+  max-width: 90vw;
+  aspect-ratio: 16/9;
+  margin: 2rem auto;
+
+  /* background-color: green; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.apod-media-container > iFrame {
+  position: absolute;
+  height: 100%;
   width: 100%;
-  min-height: 100%;
-  padding: 1rem;
-
-  background: white;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border: 0;
 }
 
-.evolution-tree {
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  border: none;
+.apod-info {
+  padding: 5vh 5vw;
 }
 
-.evolution-tree li {
-  display: inline-block;
-  min-height: 20rem;
-  width: 20rem;
-}
-
-.evolution-tree li a {
-  display: inline-block;
-  min-height: 100%;
-  width: 100%;
-}
-
-.centered {
-  display: block;
-  text-align: center;
-}
-
-#pokedex {
-  transform: transition 300ms ease-out;
-}
-
-@media (min-width: 75ch) {
-  .evolution-tree {
+@media (min-width: 100rem) {
+  .apod-card {
     display: flex;
-    margin: 0 auto;
-    flex-wrap: wrap;
     flex-direction: row;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
-
-  .pokemon-img {
-    width: 45%;
+  .apod-card > * {
+    flex-basis: 40%;
+    justify-content: space-around;
   }
-
-  .pokemon-info {
-    width: 55%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  .apod-media-container {
+    width: 100%;
   }
-
-  .pokedex-top {
-    flex-direction: row;
+  .apod-media-container > iFrame {
+    height: 56.25%;
+    width: 100%;
   }
-
-  .flavor-text {
-    padding: 1rem;
-    min-height: 4rem;
-  }
-
 }
-
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/

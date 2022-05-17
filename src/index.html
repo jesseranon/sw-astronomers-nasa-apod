@@ -5,19 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/c7867bb742.js" crossorigin="anonymous"></script>
     <!-- external CSS link -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Southewest Astronomers' Society</h1>
-    <h2>NASA APOD Archive Viewer</h2>
-    <input id="date-input" type="date" min="1995-06-16" name="" value="">
-    <button class="get-pic" type="button" name="button">Get Picture</button>
+    <header>
+        <h1>Southewest Astronomers' Society</h1>
+        <h2>NASA APOD Archive Viewer</h2>
+        <div class="form-flex">
+            <input id="date-input" type="date" min="1995-06-16" name="" value="">
+            <button class="get-pic" type="button" name="button">Get Picture</button>
+        </div>
+    </header>
 
-    <h2>Name</h2>
-    <img src="" alt="">
-    <h3>Description</h3>
+    <section class="carousel__container hidden">
+        <div class="carousel">
+            <ul class="carousel__cards">
+                
+                <!-- 
+                    SKELETON/CARD TEMPLATE
+                    <h2>Name</h2>
+                    <img src="skeleton" alt="">
+                    <h3>Description</h3> 
+                -->
+            </ul>
+        </div>
+
+        <div class="carousel__buttons">
+            <button class="carousel__button carousel__button-previous">
+                <i class="fa-solid fa-arrow-left-long"></i>
+            </button>
+            <button class="carousel__button carousel__button-next">
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <ul class="social-links">
+            <li class="social-link"><a href="https://twitter.com/jetsuko_">@jetsuko_</a></li>
+            <li class="social-link"><a href="https://github.com/jesseranon">JesseRanon</a></li>
+        </ul>
+    </footer>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
