@@ -8,7 +8,7 @@
 }
 
 :root {
-  --primary-background-color: #061f4a;
+  --primary-background-color: black;
   --primary-text-color: #fff;
   --primary-accent-color: #e59892;
 }
@@ -22,8 +22,6 @@ body {
 .hidden {
   display: none;
 }
-
-
 
 /******************************************
 /* LAYOUT
@@ -137,7 +135,7 @@ img{
 }
 
 .apod-info {
-  padding: 5vh 5vw;
+  padding: 5vh 56vw;
 }
 
 @media (min-width: 100rem) {

@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const app = new App(today);
     app.init();
 });
-
+//
 class App {
     constructor(today) {
         this._url = `/.netlify/functions/fetch-apod?date`;
