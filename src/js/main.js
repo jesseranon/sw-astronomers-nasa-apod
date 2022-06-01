@@ -1,10 +1,13 @@
 const DATE = document.querySelector('#date-input');
 const GET_PIC = document.querySelector('.get-pic');
+const TODAY = new Date();
+const TODAY_STRING = TODAY.toISOString().slice(0,10);
+const CAROUSEL_BUTTONS = document.querySelector('.carousel__buttons');
+
+DATE.setAttribute('max', TODAY_STRING);
 
 window.addEventListener('DOMContentLoaded', () => {
-    let today = new Date()
-    today = today.toISOString().slice(0,10);
-    const app = new App(today);
+    const app = new App(TODAY_STRING);
     app.init();
 });
 //
@@ -13,18 +16,23 @@ class App {
         this._url = `/.netlify/functions/fetch-apod?date`;
         this._pictures = [];
         this._today = today;
+        this._current = null;
     }
 
     init() {
         GET_PIC.addEventListener('click', async e => {
             let date = DATE.value;
             if (date == '') date = this._today;
-            const data = await this.getFetch(date);
+            this._current = date;
+            const data = await this.getFetch(this._current);
             
             this.renderApod(data);
-            this.hideShowCarouselButtons(date);
+            this.hideShowCarouselButtons(this._current);
         });
-
+        CAROUSEL_BUTTONS.addEventListener('click', async e => {
+            const button = e.target.closest('button');
+            await this.prevNextApod(button.id);
+        });
         console.log(this._today);
     }
 
@@ -117,8 +125,8 @@ class App {
         // hide next button
         //if chosen date is 1995-06-16
         // hide previous button
-        const prevBtn = document.querySelector('.carousel__button-previous');
-        const nextBtn = document.querySelector('.carousel__button-next');
+        const prevBtn = document.querySelector('#carousel__button-previous');
+        const nextBtn = document.querySelector('#carousel__button-next');
         console.log(dateString === this._today);
         if (dateString === this._today) {
             nextBtn.classList.add('btn-disabled');
@@ -133,17 +141,27 @@ class App {
                 disabledBtns.forEach(btn => btn.classList.remove('btn-disabled'));
             }
         }
-        console.log(nextBtn);
-        console.log(prevBtn);
     }
 
-    prevNextApod(btn) {
+    async prevNextApod(buttonId) {
+        let viewingDate = new Date(this._current);
+        if (buttonId === 'carousel__button-next') {
+            viewingDate.setDate(viewingDate.getDate() + 1);
+            viewingDate = viewingDate.toISOString().slice(0,10);
+        } else {
+            viewingDate.setDate(viewingDate.getDate() - 1);
+            viewingDate = viewingDate.toISOString().slice(0,10);
+        }
+        this._current = viewingDate
+        const data = await this.getFetch(this._current);
+        this.renderApod(data);
+        this.hideShowCarouselButtons(this._current);
+         // works! shows next day in YYYY-MM-DD format
         //if next btn is clicked
         // add 1 to date,
-        // fetch apod
         //if prev btn is clicked
         // remove 1 from date
-        // fetch apod
+        //fetch apod
 
     }
 }
